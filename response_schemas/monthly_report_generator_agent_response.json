@@ -1,0 +1,42 @@
+{
+  "agent_name": "Monthly Report Generator Agent",
+  "agent_id": "699dce67c546a473136807de",
+  "description": "Analyzes all accumulated findings from the current month's approved Excel data, generates a comprehensive PDF report containing executive summary of AI competitive landscape, key trends, and detailed per-competitor overviews with activity breakdowns",
+  "agent_type": "json",
+  "accessor": "result",
+  "auto_generated": true,
+  "response_schema": {
+    "result": {
+      "report_title": "string",
+      "report_period": "string",
+      "executive_summary": "string",
+      "trend_analysis": "string",
+      "competitor_overviews": "string",
+      "comparative_matrix": "string",
+      "recommendations": "string",
+      "total_findings_analyzed": "number",
+      "competitors_covered": "number"
+    }
+  },
+  "example_response": {
+    "result": {
+      "report_title": "sample string",
+      "report_period": "sample string",
+      "executive_summary": "sample string",
+      "trend_analysis": "sample string",
+      "competitor_overviews": "sample string",
+      "comparative_matrix": "sample string",
+      "recommendations": "sample string",
+      "total_findings_analyzed": 0,
+      "competitors_covered": 0
+    }
+  },
+  "has_module_outputs": true,
+  "module_outputs_example": {
+    "artifact_files": [
+      {
+        "file_url": "https://example.com/file.pdf"
+      }
+    ]
+  }
+}

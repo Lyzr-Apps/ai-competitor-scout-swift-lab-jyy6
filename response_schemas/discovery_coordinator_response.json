@@ -1,0 +1,50 @@
+{
+  "agent_name": "Discovery Coordinator",
+  "agent_id": "699dce56c546a473136807dc",
+  "description": "Coordinates the competitor content discovery workflow \u2014 routes the competitor list to research sub-agents, aggregates all findings, and produces a unified classified dataset for weekly review",
+  "agent_type": "json",
+  "accessor": "result",
+  "auto_generated": true,
+  "response_schema": {
+    "result": {
+      "report_title": "string",
+      "report_date": "string",
+      "summary": {
+        "total_findings": "number",
+        "total_competitors": "number",
+        "approved_count": "number",
+        "flagged_count": "number",
+        "dismissed_count": "number",
+        "findings_by_site_type": "string",
+        "findings_by_engagement_type": "string"
+      },
+      "flagged_items_summary": "string",
+      "detailed_findings_overview": "string"
+    }
+  },
+  "example_response": {
+    "result": {
+      "report_title": "sample string",
+      "report_date": "sample string",
+      "summary": {
+        "total_findings": 0,
+        "total_competitors": 0,
+        "approved_count": 0,
+        "flagged_count": 0,
+        "dismissed_count": 0,
+        "findings_by_site_type": "sample string",
+        "findings_by_engagement_type": "sample string"
+      },
+      "flagged_items_summary": "sample string",
+      "detailed_findings_overview": "sample string"
+    }
+  },
+  "has_module_outputs": true,
+  "module_outputs_example": {
+    "artifact_files": [
+      {
+        "file_url": "https://example.com/file.pdf"
+      }
+    ]
+  }
+}

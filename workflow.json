@@ -1,0 +1,147 @@
+{
+  "workflow_name": "AI Competitor Intelligence Hub",
+  "workflow_pattern": "Manager-Subagent + Independent Agent (Hybrid)",
+  "nodes": [
+    {
+      "id": "input_node",
+      "type": "Input",
+      "label": "User Input (Competitor List / Monthly Trigger)",
+      "nodeCategory": "input"
+    },
+    {
+      "id": "discovery_coordinator",
+      "type": "Agent",
+      "label": "Discovery Coordinator (Manager)",
+      "nodeCategory": "agent",
+      "agent_id": "699dce56c546a473136807dc",
+      "is_manager": true,
+      "file_output": true,
+      "managed_agents": [
+        "699dce35a7c96dfbdb566bcf",
+        "699dce3591aff1b6cbdfec7e",
+        "699dce35312228fd8d64d900"
+      ]
+    },
+    {
+      "id": "web_media_agent",
+      "type": "Agent",
+      "label": "Web & Media Research Agent",
+      "nodeCategory": "agent",
+      "agent_id": "699dce35a7c96dfbdb566bcf",
+      "is_subagent": true
+    },
+    {
+      "id": "social_conference_agent",
+      "type": "Agent",
+      "label": "Social & Conference Research Agent",
+      "nodeCategory": "agent",
+      "agent_id": "699dce3591aff1b6cbdfec7e",
+      "is_subagent": true
+    },
+    {
+      "id": "content_classifier_agent",
+      "type": "Agent",
+      "label": "Content Classifier Agent",
+      "nodeCategory": "agent",
+      "agent_id": "699dce35312228fd8d64d900",
+      "is_subagent": true
+    },
+    {
+      "id": "monthly_report_agent",
+      "type": "Agent",
+      "label": "Monthly Report Generator Agent",
+      "nodeCategory": "agent",
+      "agent_id": "699dce67c546a473136807de",
+      "is_independent": true,
+      "file_output": true
+    },
+    {
+      "id": "output_node",
+      "type": "Output",
+      "label": "Final Output",
+      "nodeCategory": "end"
+    }
+  ],
+  "edges": [
+    {"source": "input_node", "target": "discovery_coordinator"},
+    {"source": "discovery_coordinator", "target": "web_media_agent"},
+    {"source": "discovery_coordinator", "target": "social_conference_agent"},
+    {"source": "discovery_coordinator", "target": "content_classifier_agent"},
+    {"source": "discovery_coordinator", "target": "output_node"},
+    {"source": "input_node", "target": "monthly_report_agent"},
+    {"source": "monthly_report_agent", "target": "output_node"}
+  ],
+  "agents": [
+    {
+      "agent_id": "699dce35a7c96dfbdb566bcf",
+      "name": "Web & Media Research Agent",
+      "role": "AI competitive intelligence web researcher",
+      "provider": "Perplexity",
+      "model": "sonar-pro",
+      "temperature": 0.2,
+      "top_p": 1,
+      "file_output": false,
+      "image_output_config": null,
+      "voice_config": null,
+      "response_schema_file": "response_schemas/web_media_research_agent_response.json"
+    },
+    {
+      "agent_id": "699dce3591aff1b6cbdfec7e",
+      "name": "Social & Conference Research Agent",
+      "role": "AI competitive intelligence social and events researcher",
+      "provider": "Perplexity",
+      "model": "sonar-pro",
+      "temperature": 0.2,
+      "top_p": 1,
+      "file_output": false,
+      "image_output_config": null,
+      "voice_config": null,
+      "response_schema_file": "response_schemas/social_conference_research_agent_response.json"
+    },
+    {
+      "agent_id": "699dce35312228fd8d64d900",
+      "name": "Content Classifier Agent",
+      "role": "AI content classification and relevance scoring specialist",
+      "provider": "OpenAI",
+      "model": "gpt-4.1",
+      "temperature": 0.2,
+      "top_p": 1,
+      "file_output": false,
+      "image_output_config": null,
+      "voice_config": null,
+      "response_schema_file": "response_schemas/content_classifier_agent_response.json"
+    },
+    {
+      "agent_id": "699dce56c546a473136807dc",
+      "name": "Discovery Coordinator",
+      "role": "Competitive intelligence discovery workflow coordinator and manager",
+      "provider": "OpenAI",
+      "model": "gpt-4.1",
+      "temperature": 0.3,
+      "top_p": 1,
+      "file_output": true,
+      "image_output_config": null,
+      "voice_config": null,
+      "is_manager": true,
+      "managed_agents": [
+        "699dce35a7c96dfbdb566bcf",
+        "699dce3591aff1b6cbdfec7e",
+        "699dce35312228fd8d64d900"
+      ],
+      "response_schema_file": "response_schemas/discovery_coordinator_response.json"
+    },
+    {
+      "agent_id": "699dce67c546a473136807de",
+      "name": "Monthly Report Generator Agent",
+      "role": "Monthly competitive intelligence report author and analyst",
+      "provider": "Anthropic",
+      "model": "claude-sonnet-4-5",
+      "temperature": 0.4,
+      "top_p": 1,
+      "file_output": true,
+      "image_output_config": null,
+      "voice_config": null,
+      "response_schema_file": "response_schemas/monthly_report_generator_agent_response.json"
+    }
+  ]
+}
