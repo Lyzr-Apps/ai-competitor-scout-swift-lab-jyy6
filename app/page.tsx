@@ -286,34 +286,34 @@ function Sidebar({
   ]
 
   return (
-    <div className="w-64 min-h-screen flex flex-col border-r border-border/30 bg-[hsl(35,25%,90%)] flex-shrink-0">
-      <div className="p-6 border-b border-border/20">
-        <h1 className="text-xl font-bold font-serif tracking-wide text-foreground">
+    <div className="w-64 min-h-screen flex flex-col border-r border-[hsl(275,60%,30%)] bg-[hsl(275,88%,23%)] flex-shrink-0">
+      <div className="p-6 border-b border-[hsl(275,60%,30%)]">
+        <h1 className="text-xl font-bold tracking-wide text-white">
           Competitor Intel
         </h1>
-        <p className="text-xs text-muted-foreground mt-1 tracking-wider uppercase">AI-Powered Hub</p>
+        <p className="text-xs text-purple-300 mt-1 tracking-wider uppercase">AI-Powered Hub</p>
       </div>
       <nav className="flex-1 px-3 py-4 space-y-1">
         {navItems.map((item) => (
           <button
             key={item.key}
             onClick={() => onNavigate(item.key)}
-            className={`w-full flex items-center gap-3 px-4 py-3 rounded-lg text-sm font-medium transition-all duration-200 ${activeScreen === item.key ? 'bg-primary text-primary-foreground shadow-md' : 'text-foreground hover:bg-[hsl(35,20%,85%)]'}`}
+            className={`w-full flex items-center gap-3 px-4 py-3 rounded-lg text-sm font-medium transition-all duration-200 ${activeScreen === item.key ? 'bg-[hsl(310,72%,48%)] text-white shadow-md' : 'text-purple-200 hover:bg-[hsl(275,60%,30%)] hover:text-white'}`}
           >
             {item.icon}
             {item.label}
           </button>
         ))}
       </nav>
-      <div className="p-4 border-t border-border/20">
-        <div className="text-xs text-muted-foreground space-y-2">
-          <p className="font-semibold text-foreground text-xs uppercase tracking-wider mb-2">Active Agents</p>
+      <div className="p-4 border-t border-[hsl(275,60%,30%)]">
+        <div className="text-xs text-purple-300 space-y-2">
+          <p className="font-semibold text-purple-200 text-xs uppercase tracking-wider mb-2">Active Agents</p>
           {AGENTS.map((agent) => (
             <div key={agent.id} className="flex items-start gap-2">
-              <div className="w-2 h-2 rounded-full bg-green-600 mt-1 flex-shrink-0" />
+              <div className="w-2 h-2 rounded-full bg-[hsl(310,72%,48%)] mt-1 flex-shrink-0" />
               <div>
-                <p className="text-xs font-medium text-foreground">{agent.name}</p>
-                <p className="text-[10px] text-muted-foreground leading-tight">{agent.purpose.slice(0, 60)}...</p>
+                <p className="text-xs font-medium text-purple-100">{agent.name}</p>
+                <p className="text-[10px] text-purple-400 leading-tight">{agent.purpose.slice(0, 60)}...</p>
               </div>
             </div>
           ))}
@@ -342,7 +342,7 @@ function MetricCard({
       <div className="flex items-start justify-between">
         <div>
           <p className="text-xs text-muted-foreground uppercase tracking-wider font-medium">{label}</p>
-          <p className="text-3xl font-bold font-serif mt-2 text-foreground">{value}</p>
+          <p className="text-3xl font-bold font-sans mt-2 text-foreground">{value}</p>
           {subtitle && <p className="text-xs text-muted-foreground mt-1">{subtitle}</p>}
         </div>
         <div className="p-2.5 bg-primary/10 rounded-lg text-primary">{icon}</div>
@@ -390,7 +390,7 @@ function ConfirmModal({
   return (
     <div className="fixed inset-0 z-50 flex items-center justify-center bg-black/40 backdrop-blur-sm">
       <div className="bg-card rounded-xl p-6 shadow-xl max-w-sm w-full mx-4 border border-border/30">
-        <h3 className="text-lg font-semibold font-serif text-foreground">{title}</h3>
+        <h3 className="text-lg font-semibold font-sans text-foreground">{title}</h3>
         <p className="text-sm text-muted-foreground mt-2">{message}</p>
         <div className="flex gap-3 mt-6 justify-end">
           <button
@@ -441,7 +441,7 @@ function DashboardScreen({
   return (
     <div className="space-y-8">
       <div>
-        <h2 className="text-2xl font-bold font-serif text-foreground">Dashboard</h2>
+        <h2 className="text-2xl font-bold font-sans text-foreground">Dashboard</h2>
         <p className="text-sm text-muted-foreground mt-1">Overview of your competitive intelligence pipeline</p>
       </div>
 
@@ -475,7 +475,7 @@ function DashboardScreen({
       <div className="bg-card rounded-xl p-6 shadow-sm border border-border/20">
         <div className="flex flex-col sm:flex-row items-start sm:items-center justify-between gap-4">
           <div>
-            <h3 className="text-lg font-semibold font-serif text-foreground flex items-center gap-2">
+            <h3 className="text-lg font-semibold font-sans text-foreground flex items-center gap-2">
               <FiRefreshCw className={`w-5 h-5 ${isDiscovering ? 'animate-spin' : ''}`} />
               Run Competitor Discovery
             </h3>
@@ -535,7 +535,7 @@ function DashboardScreen({
 
       <div className="bg-card rounded-xl p-6 shadow-sm border border-border/20">
         <div className="flex items-center justify-between mb-4">
-          <h3 className="text-lg font-semibold font-serif text-foreground flex items-center gap-2">
+          <h3 className="text-lg font-semibold font-sans text-foreground flex items-center gap-2">
             <FiActivity className="w-5 h-5" />
             Recent Activity
           </h3>
@@ -623,7 +623,7 @@ function CompetitorScreen({
     <div className="space-y-6">
       <div className="flex items-center justify-between">
         <div>
-          <h2 className="text-2xl font-bold font-serif text-foreground">Competitor Management</h2>
+          <h2 className="text-2xl font-bold font-sans text-foreground">Competitor Management</h2>
           <p className="text-sm text-muted-foreground mt-1">Manage the competitors you want to track and monitor</p>
         </div>
         <button
@@ -637,7 +637,7 @@ function CompetitorScreen({
 
       {showAddForm && (
         <div className="bg-card rounded-xl p-5 shadow-sm border border-border/20">
-          <h3 className="text-base font-semibold font-serif text-foreground mb-3">Add New Competitor</h3>
+          <h3 className="text-base font-semibold font-sans text-foreground mb-3">Add New Competitor</h3>
           <div className="flex gap-3">
             <input
               type="text"
@@ -667,7 +667,7 @@ function CompetitorScreen({
       {competitors.length === 0 ? (
         <div className="bg-card rounded-xl p-12 shadow-sm border border-border/20 text-center">
           <FiUsers className="w-12 h-12 mx-auto text-muted-foreground/40 mb-4" />
-          <h3 className="text-lg font-semibold font-serif text-foreground">No competitors added yet</h3>
+          <h3 className="text-lg font-semibold font-sans text-foreground">No competitors added yet</h3>
           <p className="text-sm text-muted-foreground mt-2 max-w-md mx-auto">
             Add your first competitor to begin tracking their content, announcements, and market activity.
           </p>
@@ -792,7 +792,7 @@ function FindingsScreen({
     <div className="space-y-6">
       <div className="flex items-center justify-between">
         <div>
-          <h2 className="text-2xl font-bold font-serif text-foreground">Findings Review</h2>
+          <h2 className="text-2xl font-bold font-sans text-foreground">Findings Review</h2>
           <p className="text-sm text-muted-foreground mt-1">
             {findings.length} finding{findings.length !== 1 ? 's' : ''} total, {filtered.length} displayed
           </p>
@@ -881,7 +881,7 @@ function FindingsScreen({
       {findings.length === 0 ? (
         <div className="bg-card rounded-xl p-12 shadow-sm border border-border/20 text-center">
           <FiSearch className="w-12 h-12 mx-auto text-muted-foreground/40 mb-4" />
-          <h3 className="text-lg font-semibold font-serif text-foreground">No findings yet</h3>
+          <h3 className="text-lg font-semibold font-sans text-foreground">No findings yet</h3>
           <p className="text-sm text-muted-foreground mt-2 max-w-md mx-auto">
             Run a competitor discovery from the Dashboard to populate your findings.
           </p>
@@ -997,12 +997,12 @@ function ReportsScreen({
   return (
     <div className="space-y-6">
       <div>
-        <h2 className="text-2xl font-bold font-serif text-foreground">Monthly Reports</h2>
+        <h2 className="text-2xl font-bold font-sans text-foreground">Monthly Reports</h2>
         <p className="text-sm text-muted-foreground mt-1">Generate and review monthly competitive intelligence reports</p>
       </div>
 
       <div className="bg-card rounded-xl p-6 shadow-sm border border-border/20">
-        <h3 className="text-lg font-semibold font-serif text-foreground mb-4 flex items-center gap-2">
+        <h3 className="text-lg font-semibold font-sans text-foreground mb-4 flex items-center gap-2">
           <FiCalendar className="w-5 h-5" />
           Generate Monthly Report
         </h3>
@@ -1073,14 +1073,14 @@ function ReportsScreen({
       {reports.length === 0 ? (
         <div className="bg-card rounded-xl p-12 shadow-sm border border-border/20 text-center">
           <FiFileText className="w-12 h-12 mx-auto text-muted-foreground/40 mb-4" />
-          <h3 className="text-lg font-semibold font-serif text-foreground">No reports generated yet</h3>
+          <h3 className="text-lg font-semibold font-sans text-foreground">No reports generated yet</h3>
           <p className="text-sm text-muted-foreground mt-2 max-w-md mx-auto">
             Run your first monthly report to get a comprehensive overview of the competitive landscape.
           </p>
         </div>
       ) : (
         <div className="space-y-4">
-          <h3 className="text-lg font-semibold font-serif text-foreground flex items-center gap-2">
+          <h3 className="text-lg font-semibold font-sans text-foreground flex items-center gap-2">
             <FiBarChart2 className="w-5 h-5" />
             Report History
           </h3>
@@ -1093,7 +1093,7 @@ function ReportsScreen({
                   onClick={() => setExpandedReportId(expandedReportId === report.id ? null : report.id)}
                 >
                   <div className="flex-1 min-w-0">
-                    <h4 className="text-base font-semibold font-serif text-foreground truncate">
+                    <h4 className="text-base font-semibold font-sans text-foreground truncate">
                       {report.reportTitle || `${monthNames[displayMonth - 1]} ${report.year} Report`}
                     </h4>
                     <div className="flex items-center gap-4 mt-1 flex-wrap">
